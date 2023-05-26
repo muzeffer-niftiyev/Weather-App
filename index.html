@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://help.apple.com/assets/63D05C783BCDFA1144706932/63D05C793BCDFA1144706939/en_US/dc7f8cdb406dc7704cccb5188ddc28c1.png" type="image/x-icon">
+    <script defer src="script.js"></script>
+    <title>Weather</title>
+</head>
+
+<body>
+    <div class="loader">
+        <div class="cloud front">
+            <span class="left-front"></span>
+            <span class="right-front"></span>
+        </div>
+        <span class="sun sunshine"></span>
+        <span class="sun"></span>
+        <div class="cloud back">
+            <span class="left-back"></span>
+            <span class="right-back"></span>
+        </div>
+    </div>
+
+    <header class="search hidden">
+        <input type="text" spellcheck="false" placeholder="City name" class="input">
+        <p class="error"></p>
+    </header>
+    <main class="container hidden">
+        <div class="city-cont">
+            <p class="city">London</p>
+        </div>
+        <div class="content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Weather_icon_-_sunny.svg/1200px-Weather_icon_-_sunny.svg.png"
+                class="icon" alt="">
+            <div class="info-tab">
+                <p class="temprature">22&deg;</p>
+                <p class="description">Sunny</p>
+                <p class="date">Monday, July 20</p>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
