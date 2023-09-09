@@ -1,7 +1,7 @@
 "use strict";
 
-const body = document.querySelector('body');
-const search = document.querySelector('.search');
+const body = document.querySelector("body");
+const search = document.querySelector(".search");
 const input = document.querySelector(".input");
 const cityName = document.querySelector(".city");
 const img = document.querySelector(".icon");
@@ -10,7 +10,7 @@ const description = document.querySelector(".description");
 const dateLabel = document.querySelector(".date");
 const error = document.querySelector(".error");
 const container = document.querySelector(".container");
-const loader = document.querySelector('.loader');
+const loader = document.querySelector(".loader");
 
 const date = new Date();
 //prettier-ignore
@@ -19,21 +19,11 @@ const months = ["January","February","March","April","May","June","July","August
 const showDate = function () {
   const day = date.getDate();
   const month = months[date.getMonth()];
-  const weekday = Intl.DateTimeFormat("en", { weekday: "long" }).format(
-    date
-  );
+  const weekday = Intl.DateTimeFormat("en", { weekday: "long" }).format(date);
   return `${weekday}, ${month} ${day}`;
 };
 
 showDate();
-
-const findCity = async function (lat, lon) {
-  const api = await fetch(
-    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2`
-  );
-
-  return await api.json();
-};
 
 const weatherData = async function (city) {
   const api = await fetch(
@@ -48,25 +38,22 @@ const weatherData = async function (city) {
     description.textContent = data.weather[0].main;
     dateLabel.textContent = showDate();
     body.append(container);
-    loader.classList.add("hidden");
-    search.classList.remove("hidden");
     container.classList.remove("hidden");
-    error.innerHTML = '';
-    
-    if(data.weather[0].main === 'Clear'){
+    error.innerHTML = "";
+
+    if (data.weather[0].main === "Clear") {
       img.src = "https://cdn-icons-png.flaticon.com/512/3222/3222800.png";
     }
-    if(data.weather[0].main === 'Clouds'){
+    if (data.weather[0].main === "Clouds") {
       img.src = "https://cdn-icons-png.flaticon.com/512/1850/1850730.png";
     }
-    if(data.weather[0].main === 'Rain'){
+    if (data.weather[0].main === "Rain") {
       img.src = "https://cdn-icons-png.flaticon.com/512/263/263883.png";
     }
-    if(data.weather[0].main === 'Snow'){
-      img.src =
-        "snow.png";
+    if (data.weather[0].main === "Snow") {
+      img.src = "snow.png";
     }
-    if(data.weather[0].main === 'Haze'){
+    if (data.weather[0].main === "Haze") {
       img.src = "https://cdn-icons-png.flaticon.com/512/1779/1779807.png";
     }
   }
@@ -76,30 +63,12 @@ const weatherData = async function (city) {
     error.style.transform = "translateY(20px)";
     container.remove();
   }
-  
 };
 
-
-const locationData = navigator.geolocation.getCurrentPosition(
-  (pos) => {
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
-    findCity(lat, lon).then((res) =>
-      weatherData(res.address.city.toLowerCase())
-    );
-  },
-  () => {
-    error.innerHTML = `Could not access your location. Please check your internet connection and try again`;
-    error.style.transform = "translateY(20px)";
-    container.remove()
-  }
-);
-
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Enter') {
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
     const cityData = input.value;
-    weatherData(cityData.toLowerCase())
+    weatherData(cityData?.toLowerCase());
     input.value = null;
-   }  
-})
-
+  }
+});
