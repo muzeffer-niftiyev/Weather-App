@@ -1,16 +1,16 @@
 "use strict";
 
-const body = document.querySelector("body");
-const search = document.querySelector(".search");
-const input = document.querySelector(".input");
-const cityName = document.querySelector(".city");
 const img = document.querySelector(".icon");
+const body = document.querySelector("body");
+const error = document.querySelector(".error");
+const input = document.querySelector(".input");
+const loader = document.querySelector(".loader");
+const search = document.querySelector(".search");
+const cityName = document.querySelector(".city");
+const dateLabel = document.querySelector(".date");
+const container = document.querySelector(".container");
 const temprature = document.querySelector(".temprature");
 const description = document.querySelector(".description");
-const dateLabel = document.querySelector(".date");
-const error = document.querySelector(".error");
-const container = document.querySelector(".container");
-const loader = document.querySelector(".loader");
 
 const date = new Date();
 //prettier-ignore
@@ -34,27 +34,30 @@ const weatherData = async function (city) {
   if (api.ok) {
     cityName.textContent = data.name;
     const temp = Math.floor(data.main.temp);
-    temprature.innerHTML = `<p class="temprature">${temp}&deg;</p>`;
+    temprature.innerHTML = `<p class="temprature">${temp}&deg;C</p>`;
     description.textContent = data.weather[0].main;
     dateLabel.textContent = showDate();
     body.append(container);
     container.classList.remove("hidden");
     error.innerHTML = "";
 
+    if (data.weather[0].main === "Sunny") {
+      img.src = "./img/sunny.png";
+    }
     if (data.weather[0].main === "Clear") {
-      img.src = "https://cdn-icons-png.flaticon.com/512/3222/3222800.png";
+      img.src = "./img/clear.png";
     }
     if (data.weather[0].main === "Clouds") {
-      img.src = "https://cdn-icons-png.flaticon.com/512/1850/1850730.png";
+      img.src = "./img/cloudy";
     }
     if (data.weather[0].main === "Rain") {
-      img.src = "https://cdn-icons-png.flaticon.com/512/263/263883.png";
+      img.src = "./img/rainy";
     }
     if (data.weather[0].main === "Snow") {
-      img.src = "snow.png";
+      img.src = "./img/snowy.png";
     }
     if (data.weather[0].main === "Haze") {
-      img.src = "https://cdn-icons-png.flaticon.com/512/1779/1779807.png";
+      img.src = "./img/haze";
     }
   }
 
