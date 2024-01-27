@@ -5,6 +5,7 @@
 ## 📝 Description
 
 Welcome to the Weather App!
+
 This project can be used to know about weather all around the world. Here you input the city or country name and get weather data about that region at current time.
 
 #### 💻 Technologies
