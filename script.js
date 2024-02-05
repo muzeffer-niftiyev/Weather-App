@@ -48,16 +48,16 @@ const weatherData = async function (city) {
       img.src = "./img/clear.png";
     }
     if (data.weather[0].main === "Clouds") {
-      img.src = "./img/cloudy";
+      img.src = "./img/cloudy.png";
     }
     if (data.weather[0].main === "Rain") {
-      img.src = "./img/rainy";
+      img.src = "./img/rainy.png";
     }
     if (data.weather[0].main === "Snow") {
       img.src = "./img/snowy.png";
     }
     if (data.weather[0].main === "Haze") {
-      img.src = "./img/haze";
+      img.src = "./img/haze.png";
     }
   }
 
