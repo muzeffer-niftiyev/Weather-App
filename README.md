@@ -11,7 +11,7 @@ This project can be used to know about weather all around the world. Here you in
 
 - HTML
 - CSS
-- JavaScript (Asyncronus JavaScript)
+- JavaScript (Asynchronous JavaScript)
 
 ---
 
